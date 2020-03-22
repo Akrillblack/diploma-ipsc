@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet"
+          href="/css/font-awesome.min.css"
+          th:href="@{/css/font-awesome.min.css}">
+
+    <link rel="stylesheet"
+          href="/css/bootstrap.css"
+          th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <link rel="stylesheet"
+          href="/css/style.css"
+          th:href="@{/css/style.css}">
+
+
+    <title>Terminals List</title>
+</head>
+
+<body>
+<div th:switch="${shooters}">
+    <h2 th:case="null"> No registered shooters </h2>
+    <div th:case="*">
+        <h2> Shooters</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="shooter : ${shooters}"">
+                <td th:text="${shooter.id}"></td>
+                <td th:text="${shooter.name}"></td>
+                <td th:text="${shooter.surname}"></td>
+                <td th:text="${shooter.category}"></td>
+             </tr>
+            </tbody>
+        </table>
+        <p>New shooter</p>
+    </div>
+</div>
+</body>
+</html>
