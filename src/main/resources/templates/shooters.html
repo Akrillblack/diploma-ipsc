@@ -18,35 +18,57 @@
           href="/css/style.css"
           th:href="@{/css/style.css}">
 
-
-    <title>Terminals List</title>
+    <title>Shooters</title>
 </head>
 
 <body>
-<div th:switch="${shooters}">
-    <h2 th:case="null"> No registered shooters </h2>
-    <div th:case="*">
-        <h2> Shooters</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Category</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="shooter : ${shooters}"">
-                <td th:text="${shooter.id}"></td>
-                <td th:text="${shooter.name}"></td>
-                <td th:text="${shooter.surname}"></td>
-                <td th:text="${shooter.category}"></td>
-             </tr>
-            </tbody>
-        </table>
-        <p>New shooter</p>
+
+<!--Navigation bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Shooters List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Shooters <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Stages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Results</a>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>
+
+<!--Table-->
+<table class="table">
+    <thead>
+    <tr>
+        <th class="text-center" scope="col">Id</th>
+        <th class="text-center" scope="col">Name</th>
+        <th class="text-center" scope="col">Surname</th>
+        <th class="text-center" scope="col">City</th>
+        <th class="text-center" scope="col">Country</th>
+        <th class="text-center" scope="col">Class</th>
+        <th class="text-center" scope="col">Category</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="shooter : ${shooters}">
+        <td class="text-center" th:text="${shooter.shooterId}"></td>
+        <td class="text-center" th:text="${shooter.name}"></td>
+        <td class="text-center" th:text="${shooter.surname}"></td>
+        <td class="text-center" th:text="${shooter.city}"></td>
+        <td class="text-center" th:text="${shooter.country}"></td>
+        <td class="text-center" th:text="${shooter.shooterClass.className
+        }"></td>
+        <td class="text-center" th:text="${shooter.category.categoryName}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

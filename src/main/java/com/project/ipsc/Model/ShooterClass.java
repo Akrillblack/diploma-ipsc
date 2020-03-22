@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "shooterClass")
+@Table(name = "shooter_class")
 public class ShooterClass {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "shooterClass_id", updatable = false, nullable = false)
+    @Column(name = "shooter_class_id", updatable = false, nullable = false)
     private Integer id;
 
     @Column(name = "class_name", updatable = false, nullable = false, length = 20)
@@ -40,4 +40,5 @@ public class ShooterClass {
     public void setShooters(List<Shooter> shooters) {
         this.shooters = shooters;
     }
+
 }

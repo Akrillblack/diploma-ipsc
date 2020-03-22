@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -18,8 +19,8 @@ public class ShooterServiceImpl implements ShooterService{
     private ShooterDao shooterDao;
 
     @Override
-    public Page<Shooter> findAll(Pageable pageable) {
-        return shooterDao.findAll(pageable);
+    public List<Shooter> findAll() {
+        return shooterDao.findAll();
     }
 
     @Override
