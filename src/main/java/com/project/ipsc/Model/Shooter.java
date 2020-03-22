@@ -16,9 +16,19 @@ public class Shooter {
     @Column(name = "shooter_surname", nullable = false, length = 20)
     private String surname;
 
+    @Column(name = "shooter_country", nullable = false, length = 20)
+    private String country;
+
+    @Column(name = "shooter_city", nullable = false, length = 20)
+    private String city;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "shooterClass_id")
+    private ShooterClass shooterClass;
 
     public int getShooterId() {
         return shooterId;
@@ -50,5 +60,33 @@ public class Shooter {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public void setShooterId(Integer shooterId) {
+        this.shooterId = shooterId;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public ShooterClass getShooterClass() {
+        return shooterClass;
+    }
+
+    public void setShooterClass(ShooterClass shooterClass) {
+        this.shooterClass = shooterClass;
     }
 }

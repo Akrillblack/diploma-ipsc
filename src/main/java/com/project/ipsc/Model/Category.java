@@ -9,8 +9,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "category_id", updatable = false, nullable = false)
     private Integer id;
+
     @Column(name = "category_name", nullable = false, length = 20)
     private String categoryName;
+
     @OneToMany(mappedBy = "category")
     private List<Shooter> shooters;
 
