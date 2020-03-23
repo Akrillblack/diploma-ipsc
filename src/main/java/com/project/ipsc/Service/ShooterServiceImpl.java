@@ -24,6 +24,12 @@ public class ShooterServiceImpl implements ShooterService{
     }
 
     @Override
+    public Shooter findById(Integer shooterId) {
+        return shooterDao.findById(shooterId)
+                .orElseThrow(() -> new RuntimeException("Shooter not found"));
+    }
+
+    @Override
     public Shooter add(Shooter shooter) {
         return shooterDao.save(shooter);
     }
@@ -34,7 +40,7 @@ public class ShooterServiceImpl implements ShooterService{
     }
 
     @Override
-    public void DeleteById(Integer shooterId) {
+    public void deleteById(Integer shooterId) {
         shooterDao.deleteById(shooterId);
 
     }

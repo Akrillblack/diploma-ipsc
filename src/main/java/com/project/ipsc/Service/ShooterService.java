@@ -9,10 +9,13 @@ import java.util.List;
 public interface ShooterService {
     public List<Shooter> findAll();
 
+    public Shooter findById(Integer shooterId);
+
+
     public Shooter add (Shooter shooter);
 
     public Shooter update (Shooter shooter);
 
-    public void DeleteById (Integer shooterId);
+    public void deleteById (Integer shooterId);
 
 }
