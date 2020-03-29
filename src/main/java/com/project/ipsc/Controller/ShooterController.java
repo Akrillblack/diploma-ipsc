@@ -30,7 +30,6 @@ public class ShooterController {
 
     @GetMapping("/shooters")
     public String findAll(Model model){
-        //Page<Shooter> shooters = shooterService.findAll();
         model.addAttribute("shooters", shooterService.findAll());
         return "shooters";
     }
@@ -38,9 +37,29 @@ public class ShooterController {
     @GetMapping(value = "/addShooter")
     public final String goToShooterAddPage(Model model) {
         Shooter shooter = new Shooter();
-        //model.addAttribute("isNew", true);
+        model.addAttribute("isNew", true);
         model.addAttribute("addShooter", shooter);
         return "addShooter";
+    }
+
+    @PostMapping(value = "/addShooter")
+    public String add (@Valid Shooter shooter, BindingResult result){
+        if (result.hasErrors()) {
+            return "addShooter";
+        } else {
+            shooterService.add(shooter);
+            return "redirect:shooters";
+        }
+    }
+
+    @PostMapping (value = "/addShooter/{shooterId}")
+    public String update (@Valid Shooter shooter, BindingResult result){
+        if (result.hasErrors()){
+            return "addShooter";
+        } else {
+            shooterService.update(shooter);
+            return "redirect:shooters";
+        }
     }
 
     @GetMapping(value = "/{shooterId}/delete")
@@ -49,8 +68,5 @@ public class ShooterController {
         shooterService.deleteById(shooterId);
         return "redirect:/shooters";
     }
-
-
-
 
 }
