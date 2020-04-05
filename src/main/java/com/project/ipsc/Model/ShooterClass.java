@@ -14,7 +14,7 @@ public class ShooterClass {
     @Column(name = "class_name", updatable = false, nullable = false, length = 20)
     private String className;
 
-    @OneToMany(mappedBy = "shooterClass")
+    @OneToMany(mappedBy = "shooterClass", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private List<Shooter> shooters;
 
     public Integer getId() {
@@ -41,4 +41,12 @@ public class ShooterClass {
         this.shooters = shooters;
     }
 
+    @Override
+    public String toString() {
+        return "ShooterClass{" +
+                "id=" + id +
+                ", className='" + className + '\'' +
+                ", shooters=" + shooters +
+                '}';
+    }
 }

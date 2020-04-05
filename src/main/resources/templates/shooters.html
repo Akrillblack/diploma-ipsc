@@ -35,7 +35,7 @@
                 <a class="nav-link" href="/shooters">Shooters <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Stages</a>
+                <a class="nav-link" href="/stages">Stages</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Results</a>
@@ -64,8 +64,7 @@
         <td class="text-center" th:text="${shooter.surname}"></td>
         <td class="text-center" th:text="${shooter.city}"></td>
         <td class="text-center" th:text="${shooter.country}"></td>
-        <td class="text-center" th:text="${shooter.shooterClass.className
-        }"></td>
+        <td class="text-center" th:text="${shooter.shooterClass.className}"></td>
         <td class="text-center" th:text="${shooter.category.categoryName}"></td>
 
 
@@ -81,8 +80,7 @@
 
             <span data-toggle="modal"
                   data-target="#deleteDialog"
-                  th:attr="data-id=${shooter.shooterId},
-                                      data-name=${shooter.surname}">
+                  th:attr="data-id=${shooter.shooterId}, data-name=${shooter.surname}">
                                 <a href="#"
                                    type="button"
                                    class="btn btn-primary btn-sm"

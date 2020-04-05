@@ -1,6 +1,7 @@
 package com.project.ipsc.Service;
 
 import com.project.ipsc.Dao.StageDao;
+import com.project.ipsc.Model.Shooter;
 import com.project.ipsc.Model.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -16,8 +18,14 @@ public class StagServiceImpl implements StageService{
     private StageDao stageDao;
 
     @Override
-    public Page<Stage> findAll(Pageable pageable) {
-        return stageDao.findAll(pageable);
+    public List<Stage> findAll( ) {
+        return stageDao.findAll();
+    }
+
+    @Override
+    public Stage findById(Integer stageNumber) {
+        return stageDao.findById(stageNumber)
+                .orElseThrow(() -> new RuntimeException("Stage not found"));
     }
 
     @Override

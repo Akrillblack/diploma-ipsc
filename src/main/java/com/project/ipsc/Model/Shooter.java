@@ -22,11 +22,11 @@ public class Shooter {
     @Column(name = "shooter_city", nullable = false, length = 20)
     private String city;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "shooterClass_id")
     private ShooterClass shooterClass;
 
@@ -88,5 +88,18 @@ public class Shooter {
 
     public void setShooterClass(ShooterClass shooterClass) {
         this.shooterClass = shooterClass;
+    }
+
+    @Override
+    public String toString() {
+        return "Shooter{" +
+                "shooterId=" + shooterId +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", category=" + category +
+                ", shooterClass=" + shooterClass +
+                '}';
     }
 }

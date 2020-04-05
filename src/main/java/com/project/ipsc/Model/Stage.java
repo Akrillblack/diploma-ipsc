@@ -12,5 +12,20 @@ public class Stage {
     @Column(name = "targets", updatable = false, nullable = false)
     private Integer targetsQnt;
 
+    public Integer getStageNumber() {
+        return stageNumber;
+    }
+
+    public void setStageNumber(Integer stageNumber) {
+        this.stageNumber = stageNumber;
+    }
+
+    public Integer getTargetsQnt() {
+        return targetsQnt;
+    }
+
+    public void setTargetsQnt(Integer targetsQnt) {
+        this.targetsQnt = targetsQnt;
+    }
     //организация связи со стрелком? many to many
 }

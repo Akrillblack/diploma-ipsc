@@ -23,6 +23,7 @@
 </head>
 
 <body>
+<header>
 <!--Navigation bar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <li class="navbar-brand active" aria-current="page"
@@ -45,7 +46,7 @@
         </ul>
     </div>
 </nav>
-
+</header>
 <!--New shooter form-->
         <form id="shooterForm"
             th:object="${shooter}"
@@ -125,15 +126,15 @@
                 <label class="form-control-label font-weight-bolder"
                        for="field_name">Shooters category</label>
                 <input class="form-control"
-                       th:class="${#fields.hasErrors('category')} ? 'form-control is-valid : form-conrol'"
+                       th:class="${#fields.hasErrors('category.categoryName')} ? 'form-control is-valid : form-conrol'"
                        id="field_category"
                        type="text"
                        value=""
                        placeholder="Shooters category"
-                       th:field="*{category}"/>
-                <div th:if="${#fields.hasErrors('category')}"
+                       th:field="*{category.categoryName}"/>
+                <div th:if="${#fields.hasErrors('category.categoryName')}"
                      class="invalid-feedback"
-                     th:errors="*{category}">[errors]
+                     th:errors="*{category.categoryName}">[errors]
                 </div>
             </div>
 
@@ -141,21 +142,34 @@
                 <label class="form-control-label font-weight-bolder"
                        for="field_name">Shooters class</label>
                 <input class="form-control"
-                       th:class="${#fields.hasErrors('shooterClass')} ? 'form-control is-valid : form-conrol'"
+                       th:class="${#fields.hasErrors('shooterClass.className')} ? 'form-control is-valid : form-conrol'"
                        id="field_shooterClass"
                        type="text"
                        vaue=""
                        placeholder="Shooters class"
-                       th:field="*{shooterClass}"/>
-                <div th:if="${#fields.hasErrors('shooterClass')}"
+                       th:field="*{shooterClass.className}"/>
+                <div th:if="${#fields.hasErrors('shooterClass.className')}"
                      class="invalid-feedback"
-                     th:errors="*{shooterClass}">[errors]
+                     th:errors="*{shooterClass.className}">[errors]
                 </div>
             </div>
         </form>
 
 </body>
 <div>
-    <button type="submit" class="btn btn-primary">Add new shooter</button>
+    <button class="btn btn-primary"
+            th:href="@{/shooters}"
+            th:onclick="@{document.forms['shooterForm'].submit(); return false;}"
+            type="submit">Add new shooter</button>
 </div>
+<div>
+    <a href="addShooter.html"
+       th:href="@{/shooters}"
+       type="button"
+       class="btn btn-primary btn-sm"
+       data-toggle="button"
+       data-placement="left"
+       title="addShooter">Back</a>
+</div>
+
 </html>

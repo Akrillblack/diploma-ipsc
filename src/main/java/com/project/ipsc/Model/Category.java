@@ -13,7 +13,7 @@ public class Category {
     @Column(name = "category_name", nullable = false, length = 20)
     private String categoryName;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private List<Shooter> shooters;
 
     public int getId() {
@@ -38,5 +38,14 @@ public class Category {
 
     public void setShooters(List<Shooter> shooters) {
         this.shooters = shooters;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", categoryName='" + categoryName + '\'' +
+                ", shooters=" + shooters +
+                '}';
     }
 }

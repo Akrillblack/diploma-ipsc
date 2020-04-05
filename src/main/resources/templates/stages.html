@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet"
+          href="/css/font-awesome.min.css"
+          th:href="@{/css/font-awesome.min.css}">
+
+    <link rel="stylesheet"
+          href="/css/bootstrap.css"
+          th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <link rel="stylesheet"
+          href="/css/style.css"
+          th:href="@{/css/style.css}">
+    <title>Stages</title>
+</head>
+
+<!--Navigation bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Shooters List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/shooters">Shooters <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/stages">Stages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Results</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<section id="stages">
+    <table d="dtVerticalScrollExample" class="table table-striped table-bordered table-sm" ellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th class="text-center" scope="col">Stage number</th>
+            <th class="text-center" scope="col">Targets</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="stage : ${stages}">
+            <td class="text-center" th:text="${stage.stageNumber}"></td>
+            <td class="text-center" th:text="${stage.targetsQnt}"></td>
+            <td class="text-left">
+                <a href="stage.html"
+                   th:href="@{|/stage/${stage.stageNumber}|}"
+                type="button"
+                class="btn btn-primary btn-sm"
+                title="Edit"
+                data-toggle="tooltip"
+                data-placement="top">
+                    <span class="d-none d-md-inline">&nbsp;&nbsp;Edit&nbsp;&nbsp;</span></a>
+
+                <span data-toggle="modal"
+                      data-target="#deleteDialog"
+                      th:attr="data-id=${stage.stageNumber}, data-name=${stage.stageNumber}">
+                    <a href="#"
+                       type="button"
+                       class="btn btn-primary btn-sm"
+                       title="Delete"
+                       data-toggle="tooltip"
+                       data-placement="top">
+                    <span class="d-none d-md-inline">Delete&nbsp;&nbsp;</span></a>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<body>
+        <a href="terminal.html"
+           th:href="@{/stage}"
+           type="button"
+           class="btn btn-primary btn-sm"
+           data-toggle="button"
+           data-placement="left"
+           title="Добавить">Add new stage</a>
+
+<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert-info">
+                <h5 class="modal-title" id="exampleModalLabel"> Delete current stage</h5>
+                <button class="button" th:class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Please confirm deleting stage
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a id="deleteUrl" href="#" class="btn btn-danger">Deleting</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/js/popper.min.js"
+        th:src="@{/js/popper.min.js}"></script>
+<script src="/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    $('#deleteDialog').on('show.bs.modal', function (event) {
+        var target = $(event.relatedTarget)
+        $(this).find('.modal-body').text('Please confirm deleting stage: "' + target.data('stageNumber') + '"')
+        document.getElementById('deleteUrl').href = '/stages/' + target.data('stageNumber') + '/delete';
+    })
+</script>
+</body>
+</html>

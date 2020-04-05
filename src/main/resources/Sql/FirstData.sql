@@ -25,3 +25,9 @@ VALUES
 (10, 'Nikolay', 'Degtyarik', 2, 'Brest', 'Belarus', 1),
 (11, 'Dmitri', 'Potapov', 1, 'Gomel', 'Belarus', 3),
 (12, 'Alena', 'Karelina', 3, 'Grodno', 'Belarus', 1);
+
+INSERT INTO stage (stage_number, targets)
+VALUES
+(1, 10),
+(2, 15),
+(3, 5);

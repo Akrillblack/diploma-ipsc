@@ -11,7 +11,6 @@ public interface ShooterService {
 
     public Shooter findById(Integer shooterId);
 
-
     public Shooter add (Shooter shooter);
 
     public Shooter update (Shooter shooter);
