@@ -19,54 +19,32 @@
           th:href="@{/css/style.css}">
     <title>Stage</title>
 </head>
-<!--Navigation bar-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Shooters List</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/shooters">Shooters <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/stages">Stages</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Results</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<!--<nav>-->
-<!--    <ul class="navbar-nav float-right">-->
-<!--        <li class="nav-item">-->
-<!--            <a href="stages.html"-->
-<!--               th:href="@{/stages}"-->
-<!--               th:onclick="@{document.forms['stageForm'].submit(); return false;}"-->
-<!--               type="button"-->
-<!--               class="btn btn btn-primary"-->
-<!--               data-toggle="tooltip"-->
-<!--               data-placement="left"-->
-<!--               title="Add">-->
-<!--                <span class="d-none d-sm-inline">&nbsp&nbsp;Save </span></a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--            <a href="stages.html"-->
-<!--               th:href="@{/stage}"-->
-<!--               type="button"-->
-<!--               class="btn btn-secondary btn"-->
-<!--               data-toggle="tooltip"-->
-<!--               data-placement="left"-->
-<!--               title="Cancel">-->
-<!--                <span class="d-none d-sm-inline">&nbsp;&nbsp;Cancel</span></a>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</nav>-->
+<body>
+<header>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <li class="navbar-brand active" aria-current="page"
+        th:text="Stages"></li>
 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/shooters">Shooters <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/stages">Stages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Results</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
-<section id="stage">
     <form id="stageForm"
           th:object="${stage}"
           action="stages.html"
@@ -77,14 +55,16 @@
             <strong>Please check errors</strong>
         </div>
 
+
         <div class="form-group">
             <label class="form-control-label font-weight-bolder"
-                   for="field_stageNumber">Stage number</label>
+                   for="field_stageNumber">Stage Number</label>
             <input class="form-control"
-                   th:class="${#fields.hasErrors('stageNumber')} ? 'form-control is-invalid' : 'form-control'"
+                   th:class="${#fields.hasErrors('stageNumber')} ? 'form-control is-valid : form-conrol'"
                    id="field_stageNumber"
                    type="text"
-                   placeholder="Enter stage number"
+                   value=""
+                   placeholder="Stage Number"
                    th:field="*{stageNumber}"/>
             <div th:if="${#fields.hasErrors('stageNumber')}"
                  class="invalid-feedback"
@@ -95,10 +75,11 @@
             <label class="form-control-label font-weight-bolder"
                    for="field_targetsQnt">Target quantity</label>
             <input class="form-control"
-                   th:class="${#fields.hasErrors('targetsQnt')} ? 'form-control is-invalid' : 'form-control'"
+                   th:class="${#fields.hasErrors('targetsQnt')} ? 'form-control is-valid : form-conrol'"
                    id="field_targetsQnt"
                    type="text"
-                   placeholder="Enter stage number"
+                   value=""
+                   placeholder="Target quantity"
                    th:field="*{targetsQnt}"/>
             <div th:if="${#fields.hasErrors('targetsQnt')}"
                  class="invalid-feedback"
@@ -107,9 +88,20 @@
         </div>
     </form>
 
-</section>
-
-<body>
+<nav>
+    <div>
+        <button class="btn btn-primary"
+                th:href="@{/stages}"
+                th:onclick="@{document.forms['stageForm'].submit(); return false;}"
+                type="submit">Add new stage</button>
+    </div>
+    <div>
+        <button class="btn btn-primary"
+                th:href="@{/stages}"
+                th:onclick="@{document.forms['stageForm'].submit(); return false;}"
+                type="submit">Cancel</button>
+    </div>
+</nav>
 
 </body>
 </html>

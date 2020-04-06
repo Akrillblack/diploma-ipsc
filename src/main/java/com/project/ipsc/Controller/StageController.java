@@ -1,17 +1,12 @@
 package com.project.ipsc.Controller;
 
-import com.project.ipsc.Model.Shooter;
 import com.project.ipsc.Service.StageService;
 import com.project.ipsc.Model.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @Controller
 //@RequestMapping(value = "/stages", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -23,7 +18,7 @@ public class StageController {
     public final String goToStageAddPage(Model model) {
        Stage stage = new Stage();
        // model.addAttribute("isNew", true);
-        model.addAttribute("addStage", stage);
+        model.addAttribute("stage", stage);
         return "stage";
     }
 
@@ -33,7 +28,7 @@ public class StageController {
         return "stages";
     }
 
-    @GetMapping("/stages/{stageNumber")
+    @GetMapping("/stage/{stageNumber}")
     @ResponseStatus(value = HttpStatus.OK)
     public final String findById(@PathVariable Integer stageNumber, Model model){
         model.addAttribute("stage", stageService.findById(stageNumber));
@@ -41,33 +36,22 @@ public class StageController {
     }
 
     @PostMapping(value = "/stage")
-    public String add(@Valid Stage stage,
-                      BindingResult result) {
-        if (result.hasErrors()) {
-            return "stage";
-        } else {
+    public String add(Stage stage) {
             stageService.add(stage);
             return "redirect:/stages";
-        }
     }
 
     @PostMapping (value = "/stage/{stageNumber}")
-    public String update (@Valid Stage stage, BindingResult result){
-        if (result.hasErrors()){
-            return "stage";
-        } else {
+    public String update (Stage stage){
             stageService.update(stage);
-            return "redirect:shooters";
-        }
+            return "redirect:/stages";
     }
 
-    @GetMapping(value = "/{stageNumber}/delete")
-    public final String deleteById(@PathVariable("stageNumber") Integer stageNumber,
-                                   Model model) {
+    @GetMapping(value = "stages/{stageNumber}/delete")
+    public final String deleteById(@PathVariable("stageNumber") Integer stageNumber) {
         stageService.deleteById(stageNumber);
         return "redirect:/stages";
     }
-
 
 
 }

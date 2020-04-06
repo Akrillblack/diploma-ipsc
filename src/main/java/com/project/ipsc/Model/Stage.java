@@ -5,11 +5,11 @@ import javax.persistence.*;
 @Table(name = "stage")
 public class Stage {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "stage_number", updatable = false, nullable = false)
     private Integer stageNumber;
 
-    @Column(name = "targets", updatable = false, nullable = false)
+    @Column(name = "targets", updatable = true, nullable = false)
     private Integer targetsQnt;
 
     public Integer getStageNumber() {
@@ -27,5 +27,4 @@ public class Stage {
     public void setTargetsQnt(Integer targetsQnt) {
         this.targetsQnt = targetsQnt;
     }
-    //организация связи со стрелком? many to many
 }
