@@ -30,12 +30,12 @@ public class Shooter {
     @JoinColumn(name = "shooterClass_id")
     private ShooterClass shooterClass;
 
-    public int getShooterId() {
+    public Integer getShooterId() {
         return shooterId;
     }
 
-    public void setShooterId(int id) {
-        this.shooterId = id;
+    public void setShooterId(Integer shooterId) {
+        this.shooterId = shooterId;
     }
 
     public String getName() {
@@ -54,18 +54,6 @@ public class Shooter {
         this.surname = surname;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public void setShooterId(Integer shooterId) {
-        this.shooterId = shooterId;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -80,6 +68,14 @@ public class Shooter {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public ShooterClass getShooterClass() {

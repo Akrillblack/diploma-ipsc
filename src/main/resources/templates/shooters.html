@@ -80,7 +80,7 @@
 
             <span data-toggle="modal"
                   data-target="#deleteDialog"
-                  th:attr="data-id=${shooter.shooterId}, data-name=${shooter.surname}">
+                  th:attr="data-id=${shooter.shooterId}, data-name=${shooter.name + ' ' + shooter.surname}">
                                 <a href="#"
                                    type="button"
                                    class="btn btn-primary btn-sm"
@@ -103,7 +103,6 @@
        data-placement="left"
        title="addShooter">Add shooter</a>
 
-</body>
 <!-- Confirm delete  -->
 <div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -126,5 +125,21 @@
     </div>
 </div>
 
+<script src="/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/js/popper.min.js"
+        th:src="@{/js/popper.min.js}"></script>
+<script src="/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
 
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    $('#deleteDialog').on('show.bs.modal', function (event) {
+        var target = $(event.relatedTarget)
+        $(this).find('.modal-body').text('Please confirm deleting shooter: "' + target.data('name') + '"')
+        document.getElementById('deleteUrl').href = '/shooters/' + target.data('id') + '/delete';
+    })
+</script>
 </html>

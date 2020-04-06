@@ -35,33 +35,25 @@ public class ShooterController {
     public final String goToShooterAddPage(Model model) {
         Shooter shooter = new Shooter();
         model.addAttribute("isNew", true);
-        model.addAttribute("addShooter", shooter);
+        model.addAttribute("shooter", shooter); //!!!
         return "addShooter";
     }
 
     @PostMapping(value = "/addShooter")
-    public String add (@Valid Shooter shooter, BindingResult result){
-        if (result.hasErrors()) {
-            return "addShooter";
-        } else {
-            shooterService.add(shooter);
-            return "redirect:shooters";
-        }
+    public String add (Shooter shooter){
+            shooterService.add(shooter);//!!!
+            return "redirect:/shooters";
+
     }
 
     @PostMapping (value = "/addShooter/{shooterId}")
-    public String update (@Valid Shooter shooter, BindingResult result){
-        if (result.hasErrors()){
-            return "addShooter";
-        } else {
-            shooterService.update(shooter);
-            return "redirect:shooters";
-        }
+    public String update (Shooter shooter){
+        shooterService.update(shooter);
+        return "redirect:/shooters";
     }
 
-    @GetMapping(value = "/{shooterId}/delete")
-    public final String deleteById(@PathVariable("shooterId") Integer shooterId,
-                                   Model model) {
+    @GetMapping(value = "shooters/{shooterId}/delete")
+    public final String deleteById(@PathVariable("shooterId") Integer shooterId) {
         shooterService.deleteById(shooterId);
         return "redirect:/shooters";
     }
