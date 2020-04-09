@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet"
+          href="/css/font-awesome.min.css"
+          th:href="@{/css/font-awesome.min.css}">
+
+    <link rel="stylesheet"
+          href="/css/bootstrap.css"
+          th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <link rel="stylesheet"
+          href="/css/style.css"
+          th:href="@{/css/style.css}">
+    <title>Results</title>
+</head>
+<!--Navigation bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Shooters List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/shooters">Shooters <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/stages">Stages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/results">Results</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body>
+<nav class="py-1 mb-3 navbar navbar-expand-sm navbar-light text-dark">
+    <form class="form-inline"
+          id="FormFilterClient"
+          action="/results/filter-result"
+          th:method="@{post}">
+
+        <div class="form-group">
+            <label for="FormFilterClient">Filter results&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="category"
+                   name="category"
+                   type="text"
+                   value=""
+                   class="form-control"
+                   placeholder="Enter category">
+            <input id="shooterClass"
+                   name="shooterClass"
+                   type="text"
+                   value=""
+                   class="form-control"
+                   placeholder="Enter Class">
+        </div>
+        <div class="col-auto my-1">
+            <a href="results.html"
+               th:href="@{/results}"
+               th:onclick="@{document.forms['FormFilterResult'].submit(); return false;}"
+               class="btn btn-dark"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Filter Client">
+                <i class="fas fa-sort-amount-down"></i><span
+                    class="d-none d-sm-inline">&nbsp;&nbsp;&nbsp;&nbsp;Filter results</span></a>
+        </div>
+    </form>
+</nav>
+<table d="dtVerticalScrollExample" class="table table-striped table-bordered table-sm" ellspacing="0" width="100%">
+<thead>
+<tr>
+    <th class="text-center" scope="col">Name</th>
+    <th class="text-center" scope="col">Surname</th>
+    <th class="text-center" scope="col">Class</th>
+    <th class="text-center" scope="col">Category</th>
+    <th class="text-center" scope="col">Points</th>
+    <th class="text-center" scope="col">Time</th>
+    <th class="text-center" scope="col">Hitfactor</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="result : ${results}">
+    <td class="text-center" th:text="${result.result_name}"></td>
+    <td class="text-center" th:text="${result.result_surname}"></td>
+    <td class="text-center" th:text="${result.resultClass}"></td>
+    <td class="text-center" th:text="${result.result_category}"></td>
+    <td class="text-center" th:text="${result.result_points}"></td>
+    <td class="text-center" th:text="${result.result_time}"></td>
+    <td class="text-center" th:text="${result.result_hitfactor}"></td>
+
+</tr>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
