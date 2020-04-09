@@ -27,4 +27,12 @@ public class Stage {
     public void setTargetsQnt(Integer targetsQnt) {
         this.targetsQnt = targetsQnt;
     }
+
+    @Override
+    public String toString() {
+        return "Stage{" +
+                "stageNumber=" + stageNumber +
+                ", targetsQnt=" + targetsQnt +
+                '}';
+    }
 }
