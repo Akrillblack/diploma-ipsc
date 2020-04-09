@@ -42,24 +42,24 @@
 <body>
 <nav class="py-1 mb-3 navbar navbar-expand-sm navbar-light text-dark">
     <form class="form-inline"
-          id="FormFilterClient"
-          action="/results/filter-result"
+          id="FormFilterResult"
+          action="/results-filter"
           th:method="@{post}">
 
         <div class="form-group">
-            <label for="FormFilterClient">Filter results&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <label for="FormFilterResult">Filter results&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="resultClass"
+                   name="resultClass"
+                   type="text"
+                   value=""
+                   class="form-control"
+                   placeholder="Enter Class">
             <input id="category"
                    name="category"
                    type="text"
                    value=""
                    class="form-control"
                    placeholder="Enter category">
-            <input id="shooterClass"
-                   name="shooterClass"
-                   type="text"
-                   value=""
-                   class="form-control"
-                   placeholder="Enter Class">
         </div>
         <div class="col-auto my-1">
             <a href="results.html"
@@ -88,15 +88,14 @@
 </thead>
 <tbody>
 <tr th:each="result : ${results}">
-    <td class="text-center" th:text="${result.result_name}"></td>
-    <td class="text-center" th:text="${result.result_surname}"></td>
+    <td class="text-center" th:text="${result.resultName}"></td>
+    <td class="text-center" th:text="${result.resultSurname}"></td>
     <td class="text-center" th:text="${result.resultClass}"></td>
-    <td class="text-center" th:text="${result.result_category}"></td>
-    <td class="text-center" th:text="${result.result_points}"></td>
-    <td class="text-center" th:text="${result.result_time}"></td>
-    <td class="text-center" th:text="${result.result_hitfactor}"></td>
+    <td class="text-center" th:text="${result.category}"></td>
+    <td class="text-center" th:text="${result.resultPoints}"></td>
+    <td class="text-center" th:text="${result.resultTime}"></td>
+    <td class="text-center" th:text="${result.resultHitfactor}"></td>
 
-</tr>
 </tr>
 </tbody>
 </table>

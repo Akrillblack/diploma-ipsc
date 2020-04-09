@@ -5,7 +5,7 @@ import com.project.ipsc.Model.Result;
 import java.util.List;
 
 public interface ResultService {
-    List<Result> filterResult(String category, String shooterClass);
+    List<Result> filterResult(String resultClass, String category);
 
     public List<Result> findAll();
 }

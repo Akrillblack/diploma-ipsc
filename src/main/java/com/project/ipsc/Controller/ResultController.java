@@ -16,19 +16,13 @@ public class ResultController {
     @Autowired
     private ResultService resultService;
 
-    @GetMapping(value = "/results")
-    public final String filterResult (@ModelAttribute(value = "category") String category,
-                                      @ModelAttribute(value = "shooterClass") String shooterClass,
+    @PostMapping(value = "/results-filter")
+    public final String filterResult (@ModelAttribute(value = "resultClass") String resultClass,
+                                      @ModelAttribute(value = "category") String category,
                                       Model model,
                                       BindingResult result) {
-        try {
-            if (!result.hasErrors() && category != null && shooterClass != null){
-                model.addAttribute("results", resultService.filterResult(category, shooterClass));
-            }
+                model.addAttribute("results", resultService.filterResult(resultClass, category));
             return "results";
-        } catch (HttpClientErrorException e){
-            return "results";
-        }
     }
 
     @GetMapping("/results")

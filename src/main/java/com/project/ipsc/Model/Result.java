@@ -1,60 +1,58 @@
 package com.project.ipsc.Model;
 
-import org.springframework.stereotype.Controller;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "result")
 public class Result {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "result_id", updatable = false, nullable = false)
-    private Integer result_shooterId;
+    private Integer resultId;
 
     @Column(name = "shooter_result_name", nullable = false, length = 20)
-    private String result_name;
+    private String resultName;
 
     @Column(name = "shooter_result_surname", nullable = false, length = 20)
-    private String result_surname;
+    private String resultSurname;
 
     @Column(name = "shooter_result_class", nullable = false, length = 20)
     private String resultClass;
 
     @Column(name = "shooter_result_category", nullable = false, length = 20)
-    private String result_category;
+    private String category;
 
     @Column(name = "shoter_result_points", nullable = false, length = 20)
-    private String result_points;
+    private String resultPoints;
 
     @Column(name = "shoter_result_time", nullable = false, length = 20)
-    private String result_time;
+    private String resultTime;
 
     @Column(name = "shoter_result_hitfactor", nullable = false, length = 20)
-    private String result_hitfactor;
+    private String resultHitfactor;
 
-    public Integer getResult_shooterId() {
-        return result_shooterId;
+    public Integer getResultId() {
+        return resultId;
     }
 
-    public void setResult_shooterId(Integer result_shooterId) {
-        this.result_shooterId = result_shooterId;
+    public void setResultId(Integer resultId) {
+        this.resultId = resultId;
     }
 
-    public String getResult_name() {
-        return result_name;
+    public String getResultName() {
+        return resultName;
     }
 
-    public void setResult_name(String result_name) {
-        this.result_name = result_name;
+    public void setResultName(String resultName) {
+        this.resultName = resultName;
     }
 
-    public String getResult_surname() {
-        return result_surname;
+    public String getResultSurname() {
+        return resultSurname;
     }
 
-    public void setResult_surname(String result_surname) {
-        this.result_surname = result_surname;
+    public void setResultSurname(String resultSurname) {
+        this.resultSurname = resultSurname;
     }
 
     public String getResultClass() {
@@ -65,35 +63,35 @@ public class Result {
         this.resultClass = resultClass;
     }
 
-    public String getResult_category() {
-        return result_category;
+    public String getCategory() {
+        return category;
     }
 
-    public void setResult_category(String result_category) {
-        this.result_category = result_category;
+    public void setCategory(String resultСategory) {
+        this.category = resultСategory;
     }
 
-    public String getResult_points() {
-        return result_points;
+    public String getResultPoints() {
+        return resultPoints;
     }
 
-    public void setResult_points(String result_points) {
-        this.result_points = result_points;
+    public void setResultPoints(String resultPoints) {
+        this.resultPoints = resultPoints;
     }
 
-    public String getResult_time() {
-        return result_time;
+    public String getResultTime() {
+        return resultTime;
     }
 
-    public void setResult_time(String result_time) {
-        this.result_time = result_time;
+    public void setResultTime(String resultTime) {
+        this.resultTime = resultTime;
     }
 
-    public String getResult_hitfactor() {
-        return result_hitfactor;
+    public String getResultHitfactor() {
+        return resultHitfactor;
     }
 
-    public void setResult_hitfactor(String result_hitfactor) {
-        this.result_hitfactor = result_hitfactor;
+    public void setResultHitfactor(String resultHitfactor) {
+        this.resultHitfactor = resultHitfactor;
     }
 }

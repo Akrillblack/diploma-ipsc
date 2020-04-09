@@ -7,6 +7,7 @@ import java.util.List;
 
 @Repository
 public interface ResultDao extends JpaRepository<Result, Integer> {
-    List<Result> findResultByResult_categoryAndResultClass(
-           String category, String shooterClass);
+    List<Result> findByResultClassContainingAndCategoryContaining(
+           String resultClass, String category);
+
 }

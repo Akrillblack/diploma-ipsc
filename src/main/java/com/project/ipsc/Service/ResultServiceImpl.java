@@ -14,9 +14,8 @@ public class ResultServiceImpl implements ResultService {
     @Autowired ResultDao resultDao;
 
     @Override
-    public List<Result> filterResult(String category, String shooterClass) {
-        return resultDao.findResultByResult_categoryAndResultClass(category, shooterClass);
-    }
+    public List<Result> filterResult(String resultClass, String category) {
+        return resultDao.findByResultClassContainingAndCategoryContaining(resultClass, category);    }
 
     @Override
     public List<Result> findAll() {
